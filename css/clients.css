@@ -1,0 +1,261 @@
+/* Supplied client identities, presented as a seamless, responsive logo ribbon. */
+.client-showcase {
+  --visible-clients: 4;
+  padding-block: clamp(56px, 6.3vw, 90px);
+  background: #fff;
+}
+.client-showcase .section-title {
+  margin-bottom: 36px;
+}
+.client-showcase .section-title h2 {
+  font-size: clamp(34px, 3.4vw, 52px);
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+.client-showcase .section-subtitle {
+  color: #171b22;
+  font-size: clamp(13px, 1.35vw, 18px);
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+.client-marquee {
+  overflow: hidden;
+  width: 100%;
+  padding-block: 8px;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 2%,
+    #000 98%,
+    transparent
+  );
+}
+.client-logo-track {
+  display: flex;
+  width: calc(1600% / var(--visible-clients));
+  animation: client-ribbon 42s linear infinite;
+  animation-play-state: paused;
+}
+.client-marquee[data-ready]:not([data-paused]) .client-logo-track {
+  animation-play-state: running;
+}
+.client-logo-group {
+  display: flex;
+  flex: 0 0 50%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.client-logo-item {
+  flex: 0 0 12.5%;
+  min-width: 0;
+  padding-inline: clamp(12px, 2vw, 30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+}
+.client-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+.client-logo-item img {
+  display: block;
+  object-fit: contain;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 94px;
+  transition: transform 0.25s ease;
+}
+.client-logo-item img.logo-chipsy {
+  max-height: 135px;
+}
+.client-logo-item img.logo-gm {
+  max-height: 112px;
+}
+.client-logo-item img.logo-arab-contractors {
+  max-height: 155px;
+}
+.client-logo-item img.logo-almarasem {
+  width: 240px;
+}
+.client-logo-item img.logo-erc {
+  width: 245px;
+}
+.client-logo-item img.logo-pepsico {
+  width: 220px;
+}
+.client-logo-item img.logo-gastec {
+  width: 180px;
+}
+.client-logo-item img.logo-exxonmobil {
+  width: 225px;
+}
+.client-logo-link:hover img {
+  transform: scale(1.04);
+}
+.client-marquee:focus-within .client-logo-track {
+  animation: none !important;
+  transform: none;
+  width: calc(800% / var(--visible-clients));
+}
+.client-marquee:focus-within {
+  overflow-x: auto;
+}
+.client-marquee:focus-within .client-logo-group {
+  flex-basis: 100%;
+}
+.client-marquee:focus-within .client-logo-group[aria-hidden] {
+  display: none;
+}
+@media (hover: hover) {
+  .client-marquee:hover .client-logo-track {
+    animation-play-state: paused !important;
+  }
+}
+.client-showcase-actions {
+  position: relative;
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-top: 25px;
+}
+.client-motion-toggle {
+  position: absolute;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #46536a;
+  border: 1px solid #d9dde4;
+  border-radius: 22px;
+}
+.client-motion-toggle:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+}
+.client-motion-toggle svg {
+  width: 14px;
+  height: 14px;
+}
+.client-directory-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 105px;
+  margin-bottom: 24px;
+}
+.client-directory-logo img {
+  width: auto;
+  max-width: min(220px, 100%);
+  max-height: 100%;
+  object-fit: contain;
+}
+.client-grid article {
+  scroll-margin-top: 120px;
+}
+.client-grid article:target {
+  outline: 2px solid var(--blue);
+  outline-offset: 6px;
+}
+/* Without animation, all original logos remain reachable by horizontal scrolling. */
+.client-marquee:not([data-ready]) {
+  overflow-x: auto;
+}
+.client-marquee:not([data-ready]) .client-logo-track {
+  width: calc(800% / var(--visible-clients));
+  animation: none;
+}
+.client-marquee:not([data-ready]) .client-logo-group {
+  flex-basis: 100%;
+}
+.client-marquee:not([data-ready]) .client-logo-group[aria-hidden] {
+  display: none;
+}
+@keyframes client-ribbon {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 1023px) {
+  .client-showcase {
+    --visible-clients: 3;
+  }
+  .client-logo-item {
+    padding-inline: 20px;
+  }
+}
+@media (max-width: 639px) {
+  .client-showcase {
+    --visible-clients: 2;
+  }
+  .client-showcase .section-title {
+    margin-bottom: 22px;
+  }
+  .client-logo-item {
+    height: 140px;
+    padding-inline: 14px;
+  }
+  .client-logo-item img {
+    max-height: 72px;
+  }
+  .client-logo-item img.logo-chipsy {
+    max-height: 110px;
+  }
+  .client-logo-item img.logo-gm {
+    max-height: 96px;
+  }
+  .client-logo-item img.logo-arab-contractors {
+    max-height: 124px;
+  }
+  .client-showcase-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .client-motion-toggle {
+    position: static;
+    flex-shrink: 0;
+  }
+  .client-directory-logo {
+    height: 95px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .client-marquee {
+    overflow-x: auto;
+  }
+  .client-marquee .client-logo-track {
+    width: calc(800% / var(--visible-clients));
+    animation: none !important;
+  }
+  .client-marquee .client-logo-group {
+    flex-basis: 100%;
+  }
+  .client-marquee .client-logo-group[aria-hidden] {
+    display: none;
+  }
+  .client-logo-item img {
+    transition: none;
+  }
+  .client-motion-toggle {
+    display: none;
+  }
+}
